@@ -5,34 +5,56 @@
   <title>¡Cuenta regresiva!</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f0f0f0;
+      background-color: #f7f7f7;
     }
 
     .container {
       text-align: center;
       background-color: #fff;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
       font-size: 2em;
       color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Estilos para la imagen */
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilos para el texto del contador */
+    #countdown {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ff6f61;
     }
   </style>
 </head>
 <body>
 
 <div class="container">
+  <img src="https://via.placeholder.com/150" alt="Emoji de corazón">
   <h1>¡Solo falta <span id="countdown"></span> no nos queda nada <3!</h1>
 </div>
+
+<script>
+  // Tu código JavaScript aquí
+</script>
 
 <script>
   // Fecha límite para el contador (formato: año, mes (0-11), día, hora, minuto, segundo)
