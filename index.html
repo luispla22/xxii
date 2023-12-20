@@ -13,7 +13,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f7f7f7;
+      background-color: #fefefe; /* Cambié el color de fondo */
     }
 
     .container {
@@ -22,6 +22,8 @@
       border-radius: 10px;
       padding: 40px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      max-width: 80%; /* Cambié el ancho máximo para hacerlo más responsive */
+      width: 400px;
     }
 
     h1 {
@@ -48,14 +50,24 @@
       font-weight: bold;
       color: #ff6f61;
     }
+
+    /* Estilos para el enlace */
+    #link {
+      text-decoration: none;
+      color: #ff6f61;
+      transition: color 0.3s ease;
+    }
+
+    #link:hover {
+      color: #e63946; /* Cambié el color al pasar el cursor por encima */
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>¡Solo faltan <span id="countdown"></span> no nos queda nada <3!</h1>
-  <h2>Mientras tanto, por si me echas mucho de menos... --> <a href="#" id="link"><i class="icon fas fa-heart"></i> </a></h2>
-
+  <h1>¡Solo faltan <span id="countdown"></span>! ¡No nos queda nada <i class="icon fas fa-heart"></i>!</h1>
+  <h2>Mientras tanto, por si me echas mucho de menos... <a href="#" id="link">¡aquí tienes algo especial!</a></h2>
 </div>
 
 <script>
