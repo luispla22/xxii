@@ -86,14 +86,20 @@
   function actualizarCuentaRegresiva() {
     const ahora = new Date().getTime();
     const diferencia = fechaLimite - ahora;
-
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-    document.getElementById('countdown').innerHTML = `${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+  
+    if (diferencia <= 0) {
+      // Si la cuenta llega a cero o menos, redirigir a otra página
+      window.location.href = 'listo.html';
+    } else {
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+  
+      document.getElementById('countdown').innerHTML = `${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+    }
   }
+  
 
   setInterval(actualizarCuentaRegresiva, 1000);
   actualizarCuentaRegresiva();
