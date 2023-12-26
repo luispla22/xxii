@@ -47,6 +47,17 @@
     #link:hover {
       background-color: #333;
     }
+
+    /* Estilos para el botón "No" */
+    #noButton {
+      text-decoration: none;
+      color: #fff;
+      background-color: #ff6f61;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+      position: absolute;
+    }
   </style>
 </head>
 <body>
@@ -57,11 +68,23 @@
   <a href="#" id="link">Volver al inicio</a>
 </div>
 
+<!-- Botón "No" -->
+<button id="noButton">No</button>
+
 <script>
   const link = document.getElementById('link');
   link.addEventListener('click', function(event) {
     window.location.href = 'index.html';
     event.preventDefault();
+  });
+
+  const noButton = document.getElementById('noButton');
+  noButton.addEventListener('click', function() {
+    const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+    const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+    noButton.style.left = randomX + 'px';
+    noButton.style.top = randomY + 'px';
   });
 </script>
 
