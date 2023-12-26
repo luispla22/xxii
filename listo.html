@@ -12,6 +12,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      position: relative; /* Añadido para posicionar el botón "No" */
     }
 
     .container {
@@ -35,19 +36,6 @@
       margin-bottom: 20px;
     }
 
-    #link {
-      text-decoration: none;
-      color: #fff;
-      background-color: #000;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    #link:hover {
-      background-color: #333;
-    }
-
     /* Estilos para el botón "No" */
     #noButton {
       text-decoration: none;
@@ -57,6 +45,22 @@
       border-radius: 5px;
       transition: transform 0.3s ease;
       position: absolute;
+      top: 50%; /* Centrado verticalmente */
+      left: 50%; /* Centrado horizontalmente */
+      transform: translate(-50%, -50%);
+    }
+
+    #noButton:hover {
+      cursor: pointer;
+      /* Movimiento al pasar el mouse */
+      position: absolute;
+      top: calc(50% - 20vh * Math.random()); /* Posición vertical aleatoria */
+      left: calc(50% - 20vw * Math.random()); /* Posición horizontal aleatoria */
+    }
+
+    /* Ocultar el enlace para volver al inicio */
+    #link {
+      display: none;
     }
   </style>
 </head>
@@ -65,26 +69,33 @@
 <div class="container">
   <h1>¡Fuera de aquiiiii, se acabó el tiempo, ve a darle un beso!</h1>
   <p>Da igual cuando leas esto 🙃.</p>
+  <!-- Botón "No" -->
+  <button id="noButton">No</button>
   <a href="#" id="link">Volver al inicio</a>
 </div>
 
-<!-- Botón "No" -->
-<button id="noButton">No</button>
-
 <script>
   const link = document.getElementById('link');
+  const noButton = document.getElementById('noButton');
+
+  // Ocultar el enlace para volver al inicio
+  link.style.display = 'none';
+
+  // Cambiar el cursor al pasar sobre el botón "No"
+  noButton.addEventListener('mouseover', function() {
+    noButton.style.cursor = 'pointer';
+  });
+
+  // Mover el botón "No" al pasar sobre él
+  noButton.addEventListener('mouseover', function() {
+    noButton.style.top = `calc(50% - ${Math.random() * 20}vh)`;
+    noButton.style.left = `calc(50% - ${Math.random() * 20}vw)`;
+  });
+
+  // Redirigir al inicio al hacer clic en el enlace oculto (si se desea)
   link.addEventListener('click', function(event) {
     window.location.href = 'index.html';
     event.preventDefault();
-  });
-
-  const noButton = document.getElementById('noButton');
-  noButton.addEventListener('click', function() {
-    const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
-    const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
-
-    noButton.style.left = randomX + 'px';
-    noButton.style.top = randomY + 'px';
   });
 </script>
 
