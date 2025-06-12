@@ -3,111 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>¡No nos queda nada!</title>
-  <style>
-    body {
-      font-family: 'Courier New', Courier, monospace;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      background-color: #fff;
-      border: 2px solid #000;
-      border-radius: 10px;
-      padding: 20px;
-      width: 60%;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2em;
-      color: #000;
-      margin-bottom: 40px; /* Aumentado para evitar solapamiento con el botón */
-    }
-
-    h2 {
-      font-size: 1.2em;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    .icon {
-      font-size: 1.5em;
-      color: #ff6f61;
-      margin-right: 5px;
-    }
-
-    #countdown {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #ff6f61;
-      margin-bottom: 15px;
-    }
-
-    #link {
-      text-decoration: none;
-      color: #fff;
-      background-color: #000;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      white-space: nowrap;
-    }
-
-    #link:hover {
-      background-color: #333;
-    }
-
-    .spotify-container {
-      border-radius: 12px;
-      margin-top: 40px;
-      overflow: hidden;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-  <h1>¡Solo faltan <span id="countdown"></span>! ¡No nos queda nada <i class="icon">♥</i>!</h1>
-  <h2> <a href="#" id="link">¡click aquí para hacer más amena la espera!</a></h2>
+  <h1>¡Solo faltan <span id="countdown"></span>! ¡No te queda nada <i class="icon">♥</i>!</h1>
+  <h2><a href="#" id="link">¡Click aquí para hacer más amena la espera!</a></h2>
+</div>
+<div class="flight-container">
+  <div class="map-line">
+    <span class="dot bolivia">BO</span>
+    <span class="dot madrid">MAD</span>
+    <span class="dot sevilla">SEV</span>
+    <div class="plane">
+      ✈️
+      <span class="trail"></span>
+      <span class="trail"></span>
+      <span class="trail"></span>
+      <span class="trail"></span>
+    </div>
+  </div>
 </div>
 
-<div class="spotify-container" style="text-align: center;">
-  <iframe src="https://open.spotify.com/embed/playlist/5X9Zlri5zmut2vJG4ebFHU?utm_source=generator" width="60%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-</div>
 
 
+  <div class="spotify-container">
+    <iframe src="https://open.spotify.com/embed/playlist/5X9Zlri5zmut2vJG4ebFHU?utm_source=generator"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+    </iframe>
+  </div>
 
+<script src="function.js"></script>
 <script>
-  const fechaLimite = new Date('2023-12-26T13:48:00');
-
-  function actualizarCuentaRegresiva() {
-    const ahora = new Date().getTime();
-    const diferencia = fechaLimite - ahora;
-  
-    if (diferencia <= 0) {
-      // Si la cuenta llega a cero o menos, redirigir a otra página
-      window.location.href = 'listo.html';
-    } else {
-      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-  
-      document.getElementById('countdown').innerHTML = `${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
-    }
-  }
-  
-
-  setInterval(actualizarCuentaRegresiva, 1000);
-  actualizarCuentaRegresiva();
-
-  const link = document.getElementById('link');
-  link.addEventListener('click', function(event) {
-    window.location.href = 'https://drive.google.com/drive/folders/1QxRLfFZ0uPGQAkcOE5Dxd9b3cXG74wXE?usp=drive_link';
+  document.getElementById('link').addEventListener('click', function(event) {
     event.preventDefault();
+    window.location.href = 'https://drive.google.com/drive/folders/1QxRLfFZ0uPGQAkcOE5Dxd9b3cXG74wXE?usp=drive_link';
   });
 </script>
 
