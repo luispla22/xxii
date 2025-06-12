@@ -3,64 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Fueraaaaa</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: 'Courier New', Courier, monospace;
-      background-color: #f0f0f0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      position: relative; /* Añadido para posicionar el botón "No" */
-    }
-
-    .container {
-      background-color: #fff;
-      border: 2px solid #000;
-      border-radius: 10px;
-      padding: 20px;
-      width: 60%;
-      text-align: center;
-    }
-
     h1 {
-      font-size: 2em;
-      color: #000;
-      margin-bottom: 20px;
+      color: #d64550;
     }
 
-    p {
-      font-size: 1.2em;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    /* Estilos para el botón "No" */
     #noButton {
-      text-decoration: none;
-      color: #fff;
       background-color: #ff6f61;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: transform 0.3s ease;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
       position: absolute;
-      top: 70%; /* Centrado verticalmente */
-      left: 50%; /* Centrado horizontalmente */
-      transform: translate(-50%, -50%);
     }
 
     #noButton:hover {
-      cursor: pointer;
-      /* Movimiento al pasar el mouse */
-      position: absolute;
-      top: calc(50% - 20vh * Math.random()); /* Posición vertical aleatoria */
-      left: calc(50% - 20vw * Math.random()); /* Posición horizontal aleatoria */
-    }
-
-    /* Ocultar el enlace para volver al inicio */
-    #link {
-      display: none;
+      transform: translate(
+        calc(-50% + (Math.random() * 100 - 50) + 'px'),
+        calc(-50% + (Math.random() * 100 - 50) + 'px')
+      );
     }
   </style>
 </head>
@@ -69,33 +33,16 @@
 <div class="container">
   <h1>¡Fuera de aquiiiii, se acabó el tiempo, ve a darle un beso!</h1>
   <p>Da igual cuando leas esto 🙃.</p>
-  <!-- Botón "No" -->
   <button id="noButton">No</button>
-  <a href="#" id="link">Volver al inicio</a>
 </div>
 
 <script>
-  const link = document.getElementById('link');
   const noButton = document.getElementById('noButton');
-
-  // Ocultar el enlace para volver al inicio
-  link.style.display = 'none';
-
-  // Cambiar el cursor al pasar sobre el botón "No"
-  noButton.addEventListener('mouseover', function() {
-    noButton.style.cursor = 'pointer';
-  });
-
-  // Mover el botón "No" al pasar sobre él
-  noButton.addEventListener('mouseover', function() {
-    noButton.style.top = `calc(50% - ${Math.random() * 20}vh)`;
-    noButton.style.left = `calc(50% - ${Math.random() * 20}vw)`;
-  });
-
-  // Redirigir al inicio al hacer clic en el enlace oculto (si se desea)
-  link.addEventListener('click', function(event) {
-    window.location.href = 'index.html';
-    event.preventDefault();
+  noButton.addEventListener('mouseover', () => {
+    const randX = Math.random() * window.innerWidth * 0.6;
+    const randY = Math.random() * window.innerHeight * 0.6;
+    noButton.style.left = `${randX}px`;
+    noButton.style.top = `${randY}px`;
   });
 </script>
 
