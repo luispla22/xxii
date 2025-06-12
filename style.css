@@ -1,26 +1,225 @@
 body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #ffecd2, #fcb69f);
   margin: 0;
-  background-color: #f0f0f0;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column; /* ← Añadido */
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.container,
+.spotify-container {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
 }
 
 .container {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  padding: 30px 25px;
+  width: 100%;
+  max-width: 600px;
   text-align: center;
+  animation: fadeIn 1.2s ease-in-out;
 }
+
+.flight-container {
+  margin: 40px auto 20px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  height: 60px;
+}
+
+.map-line {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.dot {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+  background: #fff;
+  border: 2px solid #d64550;
+  padding: 6px 10px;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.plane {
+  position: absolute;
+  top: 10px;
+  left: 0%;
+  font-size: 1.3em;
+  animation: flyAcross 6s ease-in-out infinite;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trail {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  animation: fadeTrail 1s infinite ease-in-out;
+}
+
+.trail:nth-child(2) { animation-delay: 0.1s; }
+.trail:nth-child(3) { animation-delay: 0.2s; }
+.trail:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes flyAcross {
+  0%   { left: 0%;   top: 10px; }
+  25%  { left: 30%;  top: -5px; }
+  50%  { left: 55%;  top: 0px; }
+  75%  { left: 75%;  top: -10px; }
+  100% { left: 100%; top: 10px; }
+}
+
+@keyframes fadeTrail {
+  0% { opacity: 0.1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 0.1; }
+}
+
 
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   color: #333;
+  margin-bottom: 20px;
 }
 
-/* Estilos adicionales para dar un diseño más bonito */
-.container {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+h2 {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.icon {
+  color: #ff6f61;
+  font-size: 1.5em;
+  animation: pulse 1.2s infinite;
+}
+
+#countdown {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #d64550;
+  margin-top: 10px;
+}
+
+#link {
+  text-decoration: none;
+  color: #fff;
+  background-color: #d64550;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+#link:hover {
+  background-color: #a92c3b;
+}
+
+.spotify-container {
+  margin-top: 40px;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.spotify-container iframe {
+  width: 100%;
+  height: 352px;
+  border: none;
+}
+
+@media (max-width: 500px) {
+  .spotify-container {
+    margin-top: 30px;
+    padding: 0;
+  }
+
+  .spotify-container iframe {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  #countdown {
+    font-size: 1.1em;
+  }
+
+  #link {
+    padding: 10px 20px;
+    font-size: 0.95em;
+  }
+
+  .container {
+    padding: 20px 15px;
+  }
+}
+
+/* Estilos específicos para listo.html */
+#noButton {
+  background-color: #ff6f61;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+}
+
+@media (max-width: 500px) {
+  #noButton {
+    font-size: 0.95em;
+    padding: 10px 20px;
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
